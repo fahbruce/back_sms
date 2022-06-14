@@ -36,6 +36,7 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 dotenv.config({path:'config.env'});
 const PORT = process.env.PORT || 8080;
 const HOST_ = process.env.URL_HOST;
+const IP_ = process.env.HOST_IP
 
 const upload = require('express-fileupload');
 
@@ -516,21 +517,22 @@ app.use((req, res, next) => {
 /*app.listen(PORT, () => {
     
 });*/
-/*
+app.use(express.static(__dirname, {dotfiles: 'allow'}));
+
 const sslServer = https.createServer({
-	key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
-	cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')),
+	key: fs.readFileSync(path.join('/etc/letsencrypt/live/camp.rashomon-international.com', 'privkey.pem')),
+	cert: fs.readFileSync(path.join('/etc/letsencrypt/live/camp.rashomon-international.com', 'cert.pem')),
 }, app)
 
 sslServer.listen({
-    host: '51.77.244.245',
+    host: IP_,
     port: PORT
-}, () => console.log('server run'));
-*/
-app.listen({
-    host: '51.77.244.245',
-    port: PORT
-}, () => console.log('server run'));
+}, () => console.log('server run with port : ' + PORT));
 
+/*app.listen({
+    host: '51.77.244.245',
+    port: PORT
+}, () => console.log('server run with port : ' + PORT));
+*/
 
 module.exports = route

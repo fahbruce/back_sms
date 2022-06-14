@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    const HOST_ = "http://camp.rashomon-international.com"; 
+    const HOST_ = "https://camp.rashomon-international.com"; 
    // const HOST_ = "http://172.29.205.191"; 
 
     function successInc(){
